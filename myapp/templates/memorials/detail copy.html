@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ memorial.name }} | Ndoto</title>
+</head>
+
+<body>
+    <style>
+        .collection-image{
+            max-width: 100px;
+            /* height: 50px; */
+        }
+        #caption{
+            font-style: italic;
+        }
+
+    </style>
+    <h1>{{ memorial.name }}</h1>
+
+    {% if profile_image_url %}
+    <img src="{{ profile_image_url }}" alt="Profile image for {{ memorial.name }}">
+    {% else %}
+    <p>No profile image available</p>
+    {% endif %}
+
+    <h2>Image Collection</h2>
+    <div class="image-gallery">
+        {% for image in images %}
+        <div class="gallery-item">
+            <img src="{{ image.image.url }}" alt="{{ image.caption|default:'' }}" class="collection-image">
+            {% if image.caption %}<p id="caption">{{ image.caption }}</p>{% endif %}
+        </div>
+        {% empty %}
+        <p>No images in collection yet.</p>
+        {% endfor %}
+    </div>
+</body>
+
+</html>

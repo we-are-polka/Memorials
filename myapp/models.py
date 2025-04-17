@@ -13,7 +13,7 @@ def memorial_image_collection_upload_path(instance, filename):
 
 class Memorial(models.Model):
     name = models.CharField(max_length=255)
-    profile = models.ImageField(upload_to=memorial_image_profile_upload_path, blank=True, null=True)
+    profile = models.ImageField(upload_to=memorial_image_profile_upload_path, blank=True, null=True, default='media/memorials/placeholder/placeholder.png')
     
     def save(self, *args, **kwargs):
         # If this is a new instance, save first to get an ID

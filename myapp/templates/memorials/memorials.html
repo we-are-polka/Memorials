@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memorials</title>
+</head>
+
+<body>
+
+    <style>
+        .cards{
+            display: flex;
+            gap: 20px;
+        }
+        .card {
+            width: 200px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            font-family: Arial, sans-serif;
+        }
+
+        .card-image {
+            padding: 2px;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 6px;
+            display: block;
+        }
+
+        .card-name {
+            padding: 12px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .card-name a {
+            text-decoration: none;
+            color: black;
+        }
+    </style>
+
+
+    <h1>Memorials</h1>
+    <div class="cards">
+        {% for memorial in memorials %}
+        <div class="card">
+            <div class="card-image">
+                <img src="{{ memorial.profile.url }}" alt="Sample Image">
+            </div>
+            <div class="card-name">
+                <p><a href="{% url 'memorial-detail' id=memorial.id %}">{{ memorial.name }}</a></p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+
+</html>

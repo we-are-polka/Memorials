@@ -6,6 +6,10 @@ from .models import Memorial
 def index(request):
     return HttpResponse('Tuko Ndakas!')
 
+def memorials(request):
+    memorials = Memorial.objects.all()
+    return render (request, 'memorials/memorials.html', {'memorials':memorials})
+
 def memorial_detail(request, id):
     memorial = get_object_or_404(Memorial, id=id)
     context = {
